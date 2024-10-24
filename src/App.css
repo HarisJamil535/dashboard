@@ -3,3 +3,43 @@ body{
   padding: 0;
   overflow-y: hidden !important;
 }
+
+.bg-custom-gradient {
+  background-image: linear-gradient(to right, #f09433, #ff3654, #ff3b89, #fe2dbc);
+}
+
+.custom-checkbox {
+  appearance: none; /* Remove default checkbox styling */
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #d1d5db; /* Border color */
+  border-radius: 0.25rem;
+  background-color: #f9fafb; /* Background when unchecked */
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: #fe2dbc; /* Background when checked */
+  border-color: transparent;
+}
+
+.custom-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg); /* Create a checkmark */
+}
+.custom-bg-gradient {
+  background: linear-gradient(to right, #fde1c8, #ffc1c9, #ffc7e1, #fecdf2);
+}
+
+
+
+
+

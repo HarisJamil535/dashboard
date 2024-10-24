@@ -55,7 +55,7 @@ const Hashtag = () => {
           />
           <button
             onClick={handleAddHashtag}
-            className="bg-purple-600 text-white p-2 pl-3 pr-3 rounded-r-lg hover:bg-purple-700"
+            className="bg-custom-gradient text-white p-2 pl-3 pr-3 rounded-r-lg hover:bg-purple-700"
           >
             +
           </button>

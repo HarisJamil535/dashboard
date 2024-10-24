@@ -13,7 +13,7 @@ const List = () => {
           <input
             type="text"
             placeholder="Enter a list item"
-            className="flex-1 p-2 bg-gray-50 border-none rounded-lg focus:ring-0 focus:outline-none h-10"
+            className="flex-1 p-2 bg-gray-50 border-none rounded-lg justify-center focus:ring-0 focus:outline-none h-10"
           />
         </div>
       </div>

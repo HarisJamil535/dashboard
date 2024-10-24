@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../App.css'
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ const Signup = () => {
       <div className="flex flex-col items-center justify-center border-2 px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 border-[0.5px] border-solid border-[#6e28fa] border-r-1 rounded-lg space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-[#6e28fa] md:text-2xl dark:text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-[#fe2dbc] md:text-2xl dark:text-white">
               Create an account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSignup}>
@@ -78,13 +79,13 @@ const Signup = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-[#6e28fa] focus:border-[#6e28fa] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#6e28fa] dark:focus:border-[#6e28fa]"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-[#fe2dbc] focus:border-[#fe2dbc] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#6e28fa] dark:focus:border-[#6e28fa]"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-[#6e28fa] hover:bg-[#5a21c6] focus:ring-4 focus:outline-none focus:ring-[#6e28fa] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#6e28fa] dark:hover:bg-[#5a21c6] dark:focus:ring-[#6e28fa]"
+                className="w-full text-white bg-custom-gradient hover:bg-[#5a21c6] focus:ring-4 focus:outline-none focus:ring-[#6e28fa] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#6e28fa] dark:hover:bg-[#5a21c6] dark:focus:ring-[#6e28fa]"
               >
                 Sign up
               </button>
@@ -94,7 +95,7 @@ const Signup = () => {
                     id="terms"
                     aria-describedby="terms"
                     type="checkbox"
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-[#6e28fa] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#6e28fa] dark:ring-offset-gray-800 checked:bg-[#6e28fa] dark:checked:bg-[#6e28fa] checked:border-transparent"
+                    className="w-4 h-4 custom-checkbox  dark:bg-gray-700 dark:border-gray-600  dark:ring-offset-gray-800  "
                     required
                   />
                 </div>
@@ -111,7 +112,7 @@ const Signup = () => {
                 Already have an account?{" "}
                 <a
                   href="/login"
-                  className="font-medium text-[#6e28fa] hover:underline dark:text-[#6e28fa]"
+                  className="font-medium text-[#fe2dbc] hover:underline dark:text-[#6e28fa]"
                 >
                   Sign in
                 </a>

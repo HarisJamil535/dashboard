@@ -33,7 +33,7 @@ const Accounts = () => {
   };
 
   return (
-    <div className="pt-5 w-full flex flex-col items-center">
+    <div className="pt-3 w-full flex flex-col items-center">
       {/* Display the list of added emails/usernames */}
       <div className="flex justify-center flex-wrap gap-2 mb-2">
         {users.map((user, index) => (
@@ -43,7 +43,7 @@ const Accounts = () => {
           >
             <span className="mr-1 text-[12px]">@{user}</span>
             <button
-              className="text-purple-600 hover:text-purple-700"
+              className="text-[#fe2dbc] text-transparent bg-clip-text hover:text-purple-700"
               onClick={() => handleRemoveUser(index)}
             >
               <IoCloseCircle size={16} />
@@ -61,12 +61,12 @@ const Accounts = () => {
             id="email"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Enter your email"
+            placeholder="username"
             className="flex-1 p-2 bg-gray-50 border-none rounded-lg focus:ring-0 focus:outline-none"
           />
           <button
             onClick={handleAddUser}
-            className="bg-purple-600 text-white p-2 pl-3 pr-3 rounded-r-lg hover:bg-purple-700"
+            className="bg-custom-gradient text-white p-2 pl-3 pr-3 rounded-r-lg hover:bg-purple-700"
           >
             +
           </button>
@@ -76,17 +76,17 @@ const Accounts = () => {
       {/* Responsive Grid of four squares */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 w-full lg:max-w-[600px] mb-5">
         {/* Square 1 */}
-       <Square1/>
+        <Square1 />
 
         {/* Other squares (placeholder content) */}
         <div className=" w-full h-40 flex items-center justify-center rounded-lg text-gray">
-          <Square2/>
+          <Square2 />
         </div>
         <div className=" w-full h-40 flex items-center justify-center rounded-lg text-gray-600">
-          <Square3/>
+          <Square3 />
         </div>
         <div className=" w-full h-40 flex items-center justify-center rounded-lg text-gray-600">
-          <Square4/>
+          <Square4 />
         </div>
       </div>
     </div>

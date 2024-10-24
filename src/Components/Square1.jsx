@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
+import '../App.css';
 
 const Square1 = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -29,7 +30,7 @@ const Square1 = () => {
         <button
           id="dropdownDefaultButton"
           onClick={toggleDropdown}
-          className="bg-[#e5d9fc] text-gray text-gray-600 hover:bg-[#ccb5f6] focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          className=" custom-bg-gradient text-gray text-gray-600 hover:bg-[#ccb5f6] focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
           type="button"
         >
           Without Tag
@@ -100,11 +101,11 @@ const Square1 = () => {
       {/* Checkboxes */}
       <div className="flex flex-col items-start mb-2">
         <label className="flex items-center mb-2">
-          <input type="checkbox" className="mr-1 accent-purple-600" />
+          <input type="checkbox" className="mr-1 custom-checkbox" />
           <span className="text-[13px]">Only New</span>
         </label>
         <label className="flex items-center">
-          <input type="checkbox" className="mr-1 accent-purple-600" />
+          <input type="checkbox" className="mr-1 custom-checkbox" />
           <span className="text-[13px]">Only Messages</span>
         </label>
       </div>

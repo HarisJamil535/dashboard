@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../App.css'
 
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ const Login = ({ setIsLoggedIn }) => {
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 border-[0.5px] border-solid border-[#6e28fa] border-r-1 rounded-lg space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-[#6e28fa] md:text-2xl dark:text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-[#fe2dbc] md:text-2xl dark:text-white">
               Login to your account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleLogin}>
@@ -64,7 +65,7 @@ const Login = ({ setIsLoggedIn }) => {
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-[#6e28fa] hover:bg-[#5a21c6] focus:ring-4 focus:outline-none focus:ring-[#6e28fa] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#6e28fa] dark:hover:bg-[#5a21c6] dark:focus:ring-[#6e28fa]"
+                className="w-full text-white bg-custom-gradient  hover:bg-[#5a21c6] focus:ring-4 focus:outline-none focus:ring-[#6e28fa] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#6e28fa] dark:hover:bg-[#5a21c6] dark:focus:ring-[#6e28fa]"
               >
                 Sign in
               </button>
@@ -75,7 +76,7 @@ const Login = ({ setIsLoggedIn }) => {
                       id="remember"
                       aria-describedby="remember"
                       type="checkbox"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-[#6e28fa] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#6e28fa] dark:ring-offset-gray-800 checked:bg-[#6e28fa] dark:checked:bg-[#6e28fa] checked:border-transparent"
+                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 custom-checkbox checked:border-transparent"
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -89,7 +90,7 @@ const Login = ({ setIsLoggedIn }) => {
                 </div>
                 <a
                   href="#"
-                  className="text-sm font-medium text-[#6e28fa] hover:underline dark:text-[#6e28fa]"
+                  className="text-sm font-medium text-[#fe2dbc] hover:underline dark:text-[#6e28fa]"
                 >
                   Forgot password?
                 </a>
@@ -98,7 +99,7 @@ const Login = ({ setIsLoggedIn }) => {
                 Don’t have an account yet?{" "}
                 <a
                   href="/signup"
-                  className="font-medium text-[#6e28fa] hover:underline dark:text-[#6e28fa]"
+                  className="font-medium text-[#fe2dbc] hover:underline dark:text-[#6e28fa]"
                 >
                   Sign up
                 </a>

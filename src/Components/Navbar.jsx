@@ -5,7 +5,7 @@ import { FaRegBell } from "react-icons/fa";
 
 const Navbar = ({ toggleSidebar }) => {
   return (
-    <div className="w-full pt-4 pb-4 px-[5%] bg-[#f2edfc] text-gray-800 flex items-center justify-between shadow-lg shadow-gray-300">
+    <div className="w-full pt-4 pb-4 px-[5%] custom-bg-gradient text-gray-800 flex items-center justify-between shadow-lg shadow-gray-300">
       <div className="flex items-center">
         <GiHamburgerMenu
           size={24}

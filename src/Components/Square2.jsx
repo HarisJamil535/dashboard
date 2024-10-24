@@ -19,7 +19,7 @@ const Square2 = () => {
         <button
           id="dropdownDefaultButton"
           onClick={toggleDropdown}
-          className="bg-[#e5d9fc] text-gray hover:bg-[#ccb5f6] text-gray-600  focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          className="custom-bg-gradient text-gray hover:bg-[#ccb5f6] text-gray-600  focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
           type="button"
         >
           Test Group
@@ -88,7 +88,7 @@ const Square2 = () => {
       </div>
 
       {/* Button with Play Icon */}
-      <button className="bg-purple-500 text-white hover:bg-purple-600 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center">
+      <button className="bg-custom-gradient text-white focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-4 py-2 inline-flex items-center">
         <IoPlaySharp className="mr-2" /> Start
       </button>
     </div>

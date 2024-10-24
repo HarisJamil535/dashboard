@@ -3,6 +3,7 @@ import Accounts from './Accounts';
 import Hashtag from './Hashtags';
 import Posts from './Posts';
 import List from './List';
+import '../App.css'
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('profile');
 
@@ -20,7 +21,7 @@ const Tabs = () => {
           <button
             className={`inline-block p-3 border-b-2 rounded-t-lg ${
               activeTab === 'profile'
-                ? 'text-purple-600 border-purple-600 bg-[#f2edfc]'
+                ? 'text-[#fe2dbc] border-[#fe2dbc] custom-bg-gradient'
                 : 'text-gray-500 hover:text-gray-600 border-transparent'
             }`}
             onClick={() => handleTabClick('profile')}
@@ -33,7 +34,7 @@ const Tabs = () => {
           <button
             className={`inline-block p-3 border-b-2 rounded-t-lg ${
               activeTab === 'dashboard'
-                ? 'text-purple-600 border-purple-600 bg-[#f2edfc]'
+                ? 'text-[#fe2dbc] border-[#fe2dbc] custom-bg-gradient'
                 : 'text-gray-500 hover:text-gray-600 border-transparent'
             }`}
             onClick={() => handleTabClick('dashboard')}
@@ -46,7 +47,7 @@ const Tabs = () => {
           <button
             className={`inline-block p-3  border-b-2 rounded-t-lg ${
               activeTab === 'settings'
-                ? 'text-purple-600 border-purple-600 bg-[#f2edfc] '
+                ? 'text-[#fe2dbc] border-[#fe2dbc] custom-bg-gradient '
                 : 'text-gray-500 hover:text-gray-600 border-transparent'
             }`}
             onClick={() => handleTabClick('settings')}
@@ -59,7 +60,7 @@ const Tabs = () => {
           <button
             className={`inline-block p-3 border-b-2 rounded-t-lg ${
               activeTab === 'contacts'
-                ? 'text-purple-600 border-purple-600 bg-[#f2edfc]'
+                ? 'text-[#fe2dbc] border-[#fe2dbc] custom-bg-gradient'
                 : 'text-gray-500 hover:text-gray-600 border-transparent'
             }`}
             onClick={() => handleTabClick('contacts')}
