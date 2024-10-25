@@ -5,6 +5,7 @@ import '../App.css';
 const Square1 = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [usernames, setUsernames] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("Without Tag"); // Default to "Without Tag"
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -20,6 +21,11 @@ const Square1 = () => {
     setUsernames((prev) => prev.filter((username) => username !== usernameToRemove));
   };
 
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option); // Update selected option state
+    setIsDropdownOpen(false); // Close the dropdown
+  };
+
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center rounded-lg text-gray border p-2">
       {/* Heading */}
@@ -30,10 +36,10 @@ const Square1 = () => {
         <button
           id="dropdownDefaultButton"
           onClick={toggleDropdown}
-          className=" custom-bg-gradient text-gray text-gray-600 hover:bg-[#ccb5f6] focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          className="custom-bg-gradient text-gray text-gray-600 hover:bg-[#ccb5f6] focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
           type="button"
         >
-          Without Tag
+          {selectedOption} {/* Display selected option, default is "Without Tag" */}
           <svg
             className="w-2.5 h-2.5 ms-3"
             aria-hidden="true"
@@ -64,6 +70,7 @@ const Square1 = () => {
               <li>
                 <a
                   href="#"
+                  onClick={() => handleOptionSelect("Dashboard")}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Dashboard
@@ -72,27 +79,13 @@ const Square1 = () => {
               <li>
                 <a
                   href="#"
+                  onClick={() => handleOptionSelect("Settings")}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Settings
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Earnings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Sign out
-                </a>
-              </li>
+           
             </ul>
           </div>
         )}

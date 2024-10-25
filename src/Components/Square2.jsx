@@ -3,10 +3,16 @@ import { IoPlaySharp } from "react-icons/io5"; // Importing the play icon
 
 const Square2 = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedGroup, setSelectedGroup] = useState("Text Group"); // Default text for the dropdown button
 
   // Function to toggle dropdown menu
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleOptionSelect = (group) => {
+    setSelectedGroup(group); // Update the button text to the selected group
+    setDropdownOpen(false); // Close the dropdown
   };
 
   return (
@@ -19,10 +25,10 @@ const Square2 = () => {
         <button
           id="dropdownDefaultButton"
           onClick={toggleDropdown}
-          className="custom-bg-gradient text-gray hover:bg-[#ccb5f6] text-gray-600  focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          className="custom-bg-gradient text-gray hover:bg-[#ccb5f6] text-gray-600 focus:outline-none font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
           type="button"
         >
-          Test Group
+          {selectedGroup} {/* Display the selected group */}
           <svg
             className="w-2.5 h-2.5 ms-3"
             aria-hidden="true"
@@ -53,6 +59,7 @@ const Square2 = () => {
               <li>
                 <a
                   href="#"
+                  onClick={() => handleOptionSelect("Dashboard")}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Dashboard
@@ -61,27 +68,13 @@ const Square2 = () => {
               <li>
                 <a
                   href="#"
+                  onClick={() => handleOptionSelect("Settings")}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Settings
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Earnings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Sign out
-                </a>
-              </li>
+             
             </ul>
           </div>
         )}

@@ -43,7 +43,7 @@ const Accounts = () => {
           >
             <span className="mr-1 text-[12px]">@{user}</span>
             <button
-              className="text-[#fe2dbc] text-transparent bg-clip-text hover:text-purple-700"
+              className="text-[#fe2dbc]  bg-clip-text hover:text-purple-700"
               onClick={() => handleRemoveUser(index)}
             >
               <IoCloseCircle size={16} />

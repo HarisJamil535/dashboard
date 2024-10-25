@@ -37,7 +37,7 @@ const Posts = () => {
 
             {/* Remove Button */}
             <button
-              className="text-purple-600 hover:text-purple-700"
+              className="text-[#fe2dbc] hover:text-purple-700"
               onClick={() => handleRemoveLink(index)}
             >
               <IoCloseCircle size={16} />

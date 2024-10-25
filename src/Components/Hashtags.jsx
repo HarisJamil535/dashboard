@@ -31,9 +31,9 @@ const Hashtag = () => {
             className="flex items-center bg-gray-200 p-1 px-2 rounded-md"
           >
             {/* Prepend # to each tag */}
-            <span className="mr-1 text-[12px]">#{tag}</span>
+            <span className="mr-1 text-[12px]"># {tag}</span>
             <button
-              className="text-purple-600 hover:text-purple-700"
+              className="text-[#fe2dbc]  hover:text-purple-700"
               onClick={() => handleRemoveHashtag(index)}
             >
               <IoCloseCircle size={16} />
