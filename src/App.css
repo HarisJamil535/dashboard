@@ -36,7 +36,14 @@ body{
 }
 .custom-bg-gradient {
   background: linear-gradient(to right, #fde1c8, #ffc1c9, #ffc7e1, #fecdf2);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
+
+/* Optional: Additional styles for hover effect */
+.custom-bg-gradient:hover {
+  background-color: rgba(255, 199, 233, 0.7); /* Example hover effect */
+}
+
 
 
 

@@ -9,7 +9,7 @@ const Square4 = () => {
 
         {/* Top Half - My Followers */}
         <div className="flex items-center justify-center h-1/2">
-          <h3 className="text-xl text-gray font-bold">My Followers</h3>
+          <h3 className="text-xl text-gray font-bold">Followed</h3>
         </div>
 
         {/* Bottom Half - Following Section with background */}

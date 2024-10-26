@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { IoCloseCircle } from "react-icons/io5"; 
+import Sq1andSq2 from "./Sq1andSq2"; // Import Sq1andSq2 component
+import Square3 from "./Square3"; // Import Square3 component
+import Square4 from "./Square4"; // Import Square4 component
 
 const Hashtag = () => {
   const [inputValue, setInputValue] = useState("");
-  
   const [hashtags, setHashtags] = useState([]);
+  const [processMessage, setProcessMessage] = useState("Process is stopped"); // Move processMessage inside the component
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -33,7 +36,7 @@ const Hashtag = () => {
             {/* Prepend # to each tag */}
             <span className="mr-1 text-[12px]"># {tag}</span>
             <button
-              className="text-[#fe2dbc]  hover:text-purple-700"
+              className="text-[#fe2dbc] hover:text-purple-700"
               onClick={() => handleRemoveHashtag(index)}
             >
               <IoCloseCircle size={16} />
@@ -60,6 +63,27 @@ const Hashtag = () => {
             +
           </button>
         </div>
+      </div>
+
+      {/* Responsive Grid of squares below the input section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:max-w-[800px] mb-3">
+        {/* Full-width row for Sq1andSq2 */}
+        <div className="col-span-1 sm:col-span-2">
+          <Sq1andSq2 />
+        </div>
+
+        {/* Second row with Square3 and Square4 side by side */}
+        <div className="w-full flex items-center justify-center rounded-lg text-gray-600">
+          <Square3 />
+        </div>
+        <div className="w-full flex items-center justify-center rounded-lg text-gray-600">
+          <Square4 />
+        </div>
+      </div>
+
+      {/* Display process message */}
+      <div className="text-center mb-0">
+        <p className="text-[12px] italic text-gray-800">{processMessage}</p>
       </div>
     </div>
   );

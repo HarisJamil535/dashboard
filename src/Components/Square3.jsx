@@ -9,7 +9,7 @@ const Square3 = () => {
 
         {/* Top Half - Process Status */}
         <div className="flex items-center justify-center h-1/2">
-          <h3 className="text-xl text-gray font-bold">Process is stopped</h3>
+          <h3 className="text-xl text-gray font-bold">Contacted</h3>
         </div>
 
         {/* Bottom Half - Direct Message Section with background */}

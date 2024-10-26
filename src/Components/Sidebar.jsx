@@ -6,6 +6,8 @@ import { GiAlliedStar } from "react-icons/gi";
 import { IoSettingsSharp } from "react-icons/io5";
 import { HiTemplate } from "react-icons/hi";
 import { FaTags } from "react-icons/fa6";
+import { CgTemplate } from "react-icons/cg";
+import { FaUser } from "react-icons/fa";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const location = useLocation();  // Get current location
@@ -13,7 +15,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   const isActive = (path) => location.pathname === path;  // Function to check if the path is active
 
   return (
-    <div className={`h-[90.85vh] overflow-y-hidden pb-11 pl-8 pr-8 pt-24  z-10 custom-bg-gradient
+    <div className={`h-full  pb-[23.8rem]  overflow-y-hidden  pl-8 pr-8 pt-24  z-10 custom-bg-gradient
 
  w-56 transition-transform transform fixed  sm:relative sm:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'} sm:block`}>
       <IoClose size={24} onClick={onClose} className="text-gray absolute top-3 right-3 cursor-pointer sm:hidden" />
@@ -37,7 +39,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         <li>
           <Link to='/templates'>
             <div className={`flex items-center text-gray-700 justify-center gap-2 drop-shadow-lg ${isActive('/templates') ? 'bg-custom-gradient py-2 px-3 rounded-md text-white' : ''}`}>
-              <HiTemplate size={26} /> <span> Templates</span>
+              <CgTemplate size={26} /> <span> Templates</span>
             </div>
           </Link>
         </li>
@@ -52,7 +54,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         <li>
           <Link to='/prospectus'>
             <div className={`flex justify-center text-gray-700  items-center drop-shadow-lg gap-2 ${isActive('/prospectus') ? 'bg-custom-gradient py-2 px-3 rounded-md text-white' : ''}`}>
-              <GiAlliedStar size={26} /> <span> Prospectus</span>
+              <FaUser size={22} /> <span>  Prospects</span>
             </div>
           </Link>
         </li>

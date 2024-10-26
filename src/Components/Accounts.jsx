@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { IoCloseCircle } from "react-icons/io5"; // Import the close icon
-import Square2 from "./Square2";
+import { IoCloseCircle } from "react-icons/io5"; 
 import Square3 from "./Square3";
 import Square4 from "./Square4";
-import Square1 from "./Square1";
+import Sq1andSq2 from "./Sq1andSq2";
 
 const Accounts = () => {
-  // State to manage dropdown visibility
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // State to manage the input value
   const [inputValue, setInputValue] = useState("");
-  // State to store the list of emails/usernames
   const [users, setUsers] = useState([]);
+  const [processMessage, setProcessMessage] = useState("Process is stopped"); 
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -24,7 +21,7 @@ const Accounts = () => {
   const handleAddUser = () => {
     if (inputValue.trim() !== "") {
       setUsers([...users, inputValue]);
-      setInputValue(""); // Clear input after adding
+      setInputValue(""); 
     }
   };
 
@@ -74,20 +71,24 @@ const Accounts = () => {
       </div>
 
       {/* Responsive Grid of four squares */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 w-full lg:max-w-[600px] mb-5">
-        {/* Square 1 */}
-        <Square1 />
-
-        {/* Other squares (placeholder content) */}
-        <div className=" w-full h-40 flex items-center justify-center rounded-lg text-gray">
-          <Square2 />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:max-w-[700px] mb-3">
+        {/* Full-width row for Sq1andSq2 */}
+        <div className="col-span-1 sm:col-span-2">
+          <Sq1andSq2 />
         </div>
-        <div className=" w-full h-40 flex items-center justify-center rounded-lg text-gray-600">
+
+        {/* Second row with Square3 and Square4 side by side */}
+        <div className="w-full  flex items-center justify-center rounded-lg text-gray-600">
           <Square3 />
         </div>
-        <div className=" w-full h-40 flex items-center justify-center rounded-lg text-gray-600">
+        <div className="w-full  flex items-center justify-center rounded-lg text-gray-600">
           <Square4 />
         </div>
+      </div>
+
+      {/* Centered message below the grid */}
+      <div className="text-center mb-0">
+        <p className="text-[12px] italic text-gray-800">{processMessage}</p>
       </div>
     </div>
   );
