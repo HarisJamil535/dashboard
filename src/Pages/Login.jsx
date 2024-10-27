@@ -69,7 +69,7 @@ const Login = ({ setIsLoggedIn }) => {
                   <input
                     id="remember"
                     type="checkbox"
-                    className="w-4 h-4 border rounded bg-gray-50"
+                    className="w-4 h-4 border rounded custom-checkbox"
                   />
                   <label htmlFor="remember" className="ml-3 text-sm text-gray-500 dark:text-gray-300">
                     Remember me
@@ -85,7 +85,8 @@ const Login = ({ setIsLoggedIn }) => {
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
                 <a
-                  href="/signup"
+                 href="https://www.google.com" 
+    target="_self"
                   className="font-medium text-[#fe2dbc] hover:underline "
                 >
                   Sign up

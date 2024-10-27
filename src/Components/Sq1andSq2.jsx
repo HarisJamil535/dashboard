@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Square1 from "./Square1";
 import Square2 from "./Square2";
 
-const Sq1andSq2 = () => {
+const Sq1andSq2 = ({ onTogglePlay }) => {
   const [selectedAction, setSelectedAction] = useState("Contact"); // Default action
 
   return (
@@ -14,7 +14,7 @@ const Sq1andSq2 = () => {
 
       {/* Right-aligned Square2 content */}
       <div className="flex-1 ml-4">
-        <Square2 isMessageTemplateDisabled={selectedAction === "Follow"} />
+        <Square2 onTogglePlay={onTogglePlay} isMessageTemplateDisabled={selectedAction === "Follow"} />
       </div>
     </div>
   );

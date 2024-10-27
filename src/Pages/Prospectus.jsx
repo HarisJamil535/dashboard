@@ -7,9 +7,9 @@ const Prospects = () => {
   const mockApiResponse = {
     tags: [1, 2, 3],
     prospects: [
-      { email: "user1@example.com", phone: "123-456-7890", notes: "Important client" },
-      { email: "user2@example.com", phone: "234-567-8901", notes: "Follow up next week" },
-      { email: "user3@example.com", phone: "345-678-9012", notes: "Interested in premium plan" }
+      { username: "user1", email: "user1@example.com", phone: "123-456-7890", notes: "Important client" },
+      { username: "user2", email: "user2@example.com", phone: "234-567-8901", notes: "Follow up next week" },
+      { username: "user3", email: "user3@example.com", phone: "345-678-9012", notes: "Interested in premium plan" }
     ]
   };
 
@@ -55,6 +55,7 @@ const Prospects = () => {
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
           <tr className="custom-bg-gradient">
+            <th className="py-2 px-4 border text-gray-600">Username</th>
             <th className="py-2 px-4 border text-gray-600">Email</th>
             <th className="py-2 px-4 border text-gray-600">Phone</th>
             <th className="py-2 px-4 border text-gray-600">Notes</th>
@@ -64,6 +65,7 @@ const Prospects = () => {
         <tbody>
           {prospects.map((prospect) => (
             <tr key={prospect.email} className="hover:bg-gray-100">
+              <td className="py-2 px-4 text-center border">{prospect.username}</td>
               <td className="py-2 px-4 text-center border">{prospect.email}</td>
               <td className="py-2 px-4 text-center border">{prospect.phone}</td>
               <td className="py-2 px-4 text-center border">{prospect.notes}</td>
@@ -91,6 +93,10 @@ const Prospects = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300">
           <div className="custom-bg-gradient p-6 rounded-lg shadow-lg max-w-sm w-full transform transition-transform duration-300 scale-100">
             <h2 className="text-lg font-semibold mb-4">Edit Prospect</h2>
+            <div className="mb-3">
+              <label className="block text-gray-600">Username</label>
+              <p className="border rounded p-2 bg-gray-100">{selectedProspect.username}</p>
+            </div>
             <input
               type="email"
               placeholder="Email"
@@ -121,7 +127,7 @@ const Prospects = () => {
               </button>
               <button
                 onClick={handleEditSubmit}
-                className="bg-custom-gradient text-white px-4 py-2 rounded "
+                className="bg-custom-gradient text-white px-4 py-2 rounded"
               >
                 Save Changes
               </button>

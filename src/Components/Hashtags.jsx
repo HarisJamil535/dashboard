@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoCloseCircle } from "react-icons/io5"; 
 import Sq1andSq2 from "./Sq1andSq2"; // Import Sq1andSq2 component
 import Square3 from "./Square3"; // Import Square3 component
@@ -6,8 +6,17 @@ import Square4 from "./Square4"; // Import Square4 component
 
 const Hashtag = () => {
   const [inputValue, setInputValue] = useState("");
-  const [hashtags, setHashtags] = useState([]);
+  const [hashtags, setHashtags] = useState(() => {
+    // Load saved hashtags from localStorage when initializing state
+    const savedHashtags = localStorage.getItem("postHashtags");
+    return savedHashtags ? JSON.parse(savedHashtags) : [];
+  });
   const [processMessage, setProcessMessage] = useState("Process is stopped"); // Move processMessage inside the component
+
+  // Effect to save hashtags to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("postHashtags", JSON.stringify(hashtags));
+  }, [hashtags]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -15,13 +24,19 @@ const Hashtag = () => {
 
   const handleAddHashtag = () => {
     if (inputValue.trim() !== "") {
-      setHashtags([...hashtags, inputValue]);
+      setHashtags((prevHashtags) => [...prevHashtags, inputValue]);
       setInputValue(""); 
     }
   };
 
   const handleRemoveHashtag = (indexToRemove) => {
-    setHashtags(hashtags.filter((_, index) => index !== indexToRemove));
+    const updatedHashtags = hashtags.filter((_, index) => index !== indexToRemove);
+    setHashtags(updatedHashtags);
+  };
+
+  // Function to update process message from Square2
+  const handleTogglePlay = (isPlaying) => {
+    setProcessMessage(isPlaying ? "Process is running" : "Process is stopped");
   };
 
   return (
@@ -69,7 +84,7 @@ const Hashtag = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:max-w-[800px] mb-3">
         {/* Full-width row for Sq1andSq2 */}
         <div className="col-span-1 sm:col-span-2">
-          <Sq1andSq2 />
+          <Sq1andSq2 onTogglePlay={handleTogglePlay} /> {/* Pass handleTogglePlay */}
         </div>
 
         {/* Second row with Square3 and Square4 side by side */}
@@ -83,7 +98,7 @@ const Hashtag = () => {
 
       {/* Display process message */}
       <div className="text-center mb-0">
-        <p className="text-[12px] italic text-gray-800">{processMessage}</p>
+        <p className="text-[16px] italic text-gray-800">{processMessage}</p>
       </div>
     </div>
   );

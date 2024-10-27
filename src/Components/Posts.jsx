@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import { IoCloseCircle, IoLinkOutline } from "react-icons/io5"; // Import the icons
-import Sq1andSq2 from "./Sq1andSq2"; // Import Sq1andSq2 component
-import Square3 from "./Square3"; // Import Square3 component
-import Square4 from "./Square4"; // Import Square4 component
+import React, { useState, useEffect } from "react";
+import { IoCloseCircle, IoLinkOutline } from "react-icons/io5";
+import Sq1andSq2 from "./Sq1andSq2";
+import Square3 from "./Square3";
+import Square4 from "./Square4";
 
 const Posts = () => {
   const [processMessage, setProcessMessage] = useState("Process is stopped");
-  // State to manage the input value
   const [inputValue, setInputValue] = useState("");
-  // State to store the list of links
-  const [links, setLinks] = useState([]);
+  const [links, setLinks] = useState(() => {
+    const savedLinks = localStorage.getItem("postLinks");
+    return savedLinks ? JSON.parse(savedLinks) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("postLinks", JSON.stringify(links));
+  }, [links]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -17,13 +22,21 @@ const Posts = () => {
 
   const handleAddLink = () => {
     if (inputValue.trim() !== "") {
-      setLinks([...links, inputValue]);
-      setInputValue(""); // Clear input after adding
+      setLinks((prevLinks) => [...prevLinks, inputValue]);
+      setInputValue("");
+      // Removed messages
     }
   };
 
   const handleRemoveLink = (indexToRemove) => {
-    setLinks(links.filter((_, index) => index !== indexToRemove));
+    const updatedLinks = links.filter((_, index) => index !== indexToRemove);
+    setLinks(updatedLinks);
+    // Removed messages
+  };
+
+  // Function to update process message from Sq1andSq2
+  const handleTogglePlay = (isPlaying) => {
+    setProcessMessage(isPlaying ? "Process is running" : "Process is stopped");
   };
 
   return (
@@ -31,15 +44,9 @@ const Posts = () => {
       {/* Display the list of added links */}
       <div className="flex justify-center flex-wrap gap-2 mb-2">
         {links.map((link, index) => (
-          <div
-            key={index}
-            className="flex items-center bg-gray-200 p-1 px-2 rounded-lg"
-          >
-            {/* Link Icon and Link text */}
+          <div key={index} className="flex items-center bg-gray-200 p-1 px-2 rounded-lg">
             <IoLinkOutline className="mr-1 text-gray-600" size={15} />
             <span className="mr-1 text-[12px]">{link}</span>
-
-            {/* Remove Button */}
             <button
               className="text-[#fe2dbc] hover:text-purple-700"
               onClick={() => handleRemoveLink(index)}
@@ -54,7 +61,7 @@ const Posts = () => {
       <div className="relative w-full md:w-[600px] lg:w-[800px] mb-5">
         <div className="flex items-center border border-gray-300 rounded-lg">
           <span className="flex items-center pl-3 text-gray-500">
-            <IoLinkOutline size={18} /> {/* Link icon */}
+            <IoLinkOutline size={18} />
           </span>
           <input
             type="text"
@@ -76,7 +83,7 @@ const Posts = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:max-w-[800px] ">
         {/* Full-width row for Sq1andSq2 */}
         <div className="col-span-1 sm:col-span-2">
-          <Sq1andSq2 />
+          <Sq1andSq2 onTogglePlay={handleTogglePlay} />
         </div>
 
         {/* Second row with Square3 and Square4 side by side */}
@@ -87,8 +94,10 @@ const Posts = () => {
           <Square4 />
         </div>
       </div>
+
+      {/* Process message display */}
       <div className="text-center mt-3">
-        <p className="text-[12px] italic text-gray-800">{processMessage}</p>
+        <p className="text-[16px] italic text-gray-800">{processMessage}</p>
       </div>
     </div>
   );

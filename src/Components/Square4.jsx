@@ -16,7 +16,7 @@ const Square4 = () => {
         <div className="flex flex-col items-center justify-center h-1/2 w-full custom-bg-gradient to-[#fecdf2] py-2 rounded-b-lg">
           <IoPeopleOutline className="text-xl text-gray-600 mb-1" /> {/* Followers Icon */}
           <span className="text-sm font-semibold text-gray-700">Following</span>
-          <span className="text-gray-500 text-lg">5</span>
+          <span className="text-gray-500 text-lg">0</span>
         </div>
       </div>
     </div>

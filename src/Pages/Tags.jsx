@@ -10,14 +10,13 @@ const Tags = () => {
       { tag_id: 1, name: "Tag 1", color_hex_code: "green" },
       { tag_id: 2, name: "Tag 2", color_hex_code: "#ff5733" },
       { tag_id: 3, name: "Tag 3", color_hex_code: "#33c4ff" },
-
     ]
   };
 
   const [tags, setTags] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTagName, setNewTagName] = useState('');
-  const [newTagColor, setNewTagColor] = useState('');
+  const [newTagColor, setNewTagColor] = useState('#000000'); // Default color
 
   useEffect(() => {
     setTags(mockApiResponse.tags);
@@ -27,7 +26,14 @@ const Tags = () => {
     setTags(tags.filter(tag => tag.tag_id !== tag_id));
   };
 
-  const handleAddTag = () => {
+  const handleAddTag = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    if (!newTagName) {
+      alert("Tag name is required"); // Custom error handling
+      return;
+    }
+
     const newTag = {
       tag_id: Date.now(),  // Unique id
       name: newTagName,
@@ -36,7 +42,7 @@ const Tags = () => {
     setTags([...tags, newTag]);
     setIsModalOpen(false);
     setNewTagName('');
-    setNewTagColor('');
+    setNewTagColor('#000000'); // Reset to default color
   };
 
   return (
@@ -84,34 +90,39 @@ const Tags = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300">
           <div className="custom-bg-gradient p-6 rounded-lg shadow-lg max-w-sm w-full transform transition-transform duration-300 scale-100">
             <h2 className="text-lg font-semibold mb-4">Add New Tag</h2>
-            <input
-              type="text"
-              placeholder="Tag Name"
-              value={newTagName}
-              onChange={(e) => setNewTagName(e.target.value)}
-              className="w-full p-2 mb-3 border rounded"
-            />
-            <input
-              type="text"
-              placeholder="Hex Color Code"
-              value={newTagColor}
-              onChange={(e) => setNewTagColor(e.target.value)}
-              className="w-full p-2 mb-4 border rounded"
-            />
-            <div className="flex justify-end space-x-2">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="bg-gray-600  text-white px-4 py-2 rounded hover:bg-gray-700"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleAddTag}
-                className="bg-custom-gradient text-white px-4 py-2 rounded "
-              >
-                Add Tag
-              </button>
-            </div>
+            <form onSubmit={handleAddTag}> {/* Wrap input in a form */}
+              <input
+                type="text"
+                placeholder="Tag Name"
+                required
+                value={newTagName}
+                onChange={(e) => setNewTagName(e.target.value)}
+                className="w-full p-2 mb-3 border rounded"
+              />
+              <div className="mb-4">
+                <label className="block mb-1">Tag Color:</label>
+                <input
+                  type="color" 
+                  value={newTagColor}
+                  onChange={(e) => setNewTagColor(e.target.value)}
+                  className="w-16 h-10 rounded-none appearance-none border-none" // Custom styles
+                />
+              </div>
+              <div className="flex justify-end space-x-2">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit" // Set type to submit
+                  className="bg-custom-gradient text-white px-4 py-2 rounded"
+                >
+                  Add Tag
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
@@ -119,4 +130,4 @@ const Tags = () => {
   );
 };
 
-export default Tags;
+export default Tags; 

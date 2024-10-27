@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import '../App.css';
 
 const Settings = () => {
-  const [minDelay, setMinDelay] = useState('');
-  const [maxDelay, setMaxDelay] = useState('');
-  const [maxRequests, setMaxRequests] = useState('');
+  // Initialize state with default values
+  const [minDelay, setMinDelay] = useState(200); // Default min delay
+  const [maxDelay, setMaxDelay] = useState(500); // Default max delay
+  const [maxRequests, setMaxRequests] = useState(30); // Default max requests
   const [warning, setWarning] = useState('');
 
   const handleSave = () => {
@@ -47,7 +48,7 @@ const Settings = () => {
               </label>
               <div className="flex">
                 <input
-                  type="text"
+                  type="number" // Changed to number input
                   id="min-delay"
                   value={minDelay}
                   onChange={(e) => setMinDelay(e.target.value)}
@@ -64,7 +65,7 @@ const Settings = () => {
               </label>
               <div className="flex">
                 <input
-                  type="text"
+                  type="number" // Changed to number input
                   id="max-delay"
                   value={maxDelay}
                   onChange={(e) => setMaxDelay(e.target.value)}
@@ -97,7 +98,7 @@ const Settings = () => {
               Maximum Number of Requests
             </label>
             <input
-              type="text"
+              type="number" // Changed to number input
               id="max-requests"
               value={maxRequests}
               onChange={(e) => setMaxRequests(e.target.value)}

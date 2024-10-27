@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FiPlus, FiTrash2 } from 'react-icons/fi';  
-import { IoIosCloseCircle } from "react-icons/io";
 import '../App.css';
 
 const Templates = () => {
@@ -14,7 +13,7 @@ const Templates = () => {
     setTemplateGroups(templateGroups.filter(group => group.id !== id));
   };
 
-  const addTextArea = (groupId, setFunction, items) => {
+  const addTextArea = (groupId, setFunction) => {
     const updatedGroups = templateGroups.map(group => {
       if (group.id === groupId) {
         return {
@@ -27,7 +26,7 @@ const Templates = () => {
     setTemplateGroups(updatedGroups);
   };
 
-  const removeTextArea = (groupId, setFunction, items, id) => {
+  const removeTextArea = (groupId, setFunction, id) => {
     const updatedGroups = templateGroups.map(group => {
       if (group.id === groupId) {
         return {
@@ -53,7 +52,7 @@ const Templates = () => {
         />
         <button
           className="ml-1 text-red-500"
-          onClick={() => removeTextArea(groupId, setFunction, items, item.id)}
+          onClick={() => removeTextArea(groupId, setFunction, item.id)}
         >
           <FiTrash2 className="text-xl" />
         </button>
@@ -76,13 +75,8 @@ const Templates = () => {
 
       {/* Template Groups Layout */}
       {templateGroups.map((group) => (
-        <div key={group.id} className="custom-bg-gradient py-2 px-2 rounded-md mt-2 w-full flex flex-col space-y-2 relative">
-          <button
-            className="absolute top-2 right-2 text-red-500"
-            onClick={() => removeTemplateGroup(group.id)} // Close button
-          >
-            <IoIosCloseCircle className="text-xl" />
-          </button>
+        <div key={group.id} className="custom-bg-gradient py-2 px-2 rounded-md mt-2 w-full flex flex-col space-y-2">
+          {/* Removed close button */}
           
           {/* Row with input, save button, and social media icons */}
           <div className="w-full flex justify-between items-center">
@@ -95,8 +89,6 @@ const Templates = () => {
               />
               <button className="bg-custom-gradient text-white py-1 md:py-[6px] px-3 text-[12px] md:text-[14px] md:px-4 rounded-md">Save</button>
             </div>
-
-          
           </div>
 
           {/* Columns for Intros, Bodies, and Outros */}
@@ -107,7 +99,7 @@ const Templates = () => {
               {renderTextAreas(group.id, group.intros, 'intros')}
               <button
                 className="flex items-center   mt-0 text-white text-[11px] rounded-2xl bg-blue-400 px-2 py-[0.15rem]"
-                onClick={() => addTextArea(group.id, 'intros', group.intros)}
+                onClick={() => addTextArea(group.id, 'intros')}
               >
                 <FiPlus size={14} className="mr-1" /> Add More
               </button>
@@ -119,7 +111,7 @@ const Templates = () => {
               {renderTextAreas(group.id, group.bodies, 'bodies')}
               <button
                 className="flex items-center mt-0 text-white text-[11px] rounded-2xl bg-blue-400 px-2 py-[0.15rem]"
-                onClick={() => addTextArea(group.id, 'bodies', group.bodies)}
+                onClick={() => addTextArea(group.id, 'bodies')}
               >
                 <FiPlus className="mr-1" /> Add More
               </button>
@@ -131,7 +123,7 @@ const Templates = () => {
               {renderTextAreas(group.id, group.outros, 'outros')}
               <button
                 className="flex items-center mt-0 text-white text-[11px] rounded-2xl bg-blue-400 px-2 py-[0.15rem]"
-                onClick={() => addTextArea(group.id, 'outros', group.outros)}
+                onClick={() => addTextArea(group.id, 'outros')}
               >
                 <FiPlus className="mr-1" /> Add More
               </button>
@@ -142,16 +134,9 @@ const Templates = () => {
           <div className="w-full flex justify-end">
             <button
               className="bg-red-500 text-white py-[0.4rem] text-[12px] md:text-[12px] px-3 rounded-md flex items-center"
-              onClick={() => {
-                setTemplateGroups(templateGroups.map(group => ({
-                  ...group,
-                  intros: [{ id: 1, text: "" }],
-                  bodies: [{ id: 1, text: "" }],
-                  outros: [{ id: 1, text: "" }]
-                })));
-              }}
+              onClick={() => removeTemplateGroup(group.id)}
             >
-              <FiTrash2 className="mr-2" /> Delete All
+              <FiTrash2 className="mr-2" /> Delete
             </button>
           </div>
         </div>

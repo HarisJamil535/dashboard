@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCloseCircle } from "react-icons/io5"; 
 import Square3 from "./Square3";
 import Square4 from "./Square4";
 import Sq1andSq2 from "./Sq1andSq2";
 
 const Accounts = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [users, setUsers] = useState([]);
   const [processMessage, setProcessMessage] = useState("Process is stopped"); 
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setUsers(storedUsers);
+  }, []);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -20,13 +20,25 @@ const Accounts = () => {
 
   const handleAddUser = () => {
     if (inputValue.trim() !== "") {
-      setUsers([...users, inputValue]);
+      const newUsers = [...users, inputValue];
+      setUsers(newUsers);
+      localStorage.setItem("users", JSON.stringify(newUsers)); 
+      setProcessMessage(`User @${inputValue} added.`); 
       setInputValue(""); 
     }
   };
 
   const handleRemoveUser = (indexToRemove) => {
-    setUsers(users.filter((_, index) => index !== indexToRemove));
+    const removedUser = users[indexToRemove];
+    const newUsers = users.filter((_, index) => index !== indexToRemove);
+    setUsers(newUsers);
+    localStorage.setItem("users", JSON.stringify(newUsers)); 
+    setProcessMessage(`User @${removedUser} removed.`); 
+  };
+
+  // Function to update process message from Square2
+  const handleTogglePlay = (isPlaying) => {
+    setProcessMessage(isPlaying ? "Process is running" : "Process is stopped");
   };
 
   return (
@@ -40,7 +52,7 @@ const Accounts = () => {
           >
             <span className="mr-1 text-[12px]">@{user}</span>
             <button
-              className="text-[#fe2dbc]  bg-clip-text hover:text-purple-700"
+              className="text-[#fe2dbc] bg-clip-text hover:text-purple-700"
               onClick={() => handleRemoveUser(index)}
             >
               <IoCloseCircle size={16} />
@@ -74,21 +86,21 @@ const Accounts = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:max-w-[700px] mb-3">
         {/* Full-width row for Sq1andSq2 */}
         <div className="col-span-1 sm:col-span-2">
-          <Sq1andSq2 />
+          <Sq1andSq2 onTogglePlay={handleTogglePlay} />
         </div>
 
         {/* Second row with Square3 and Square4 side by side */}
-        <div className="w-full  flex items-center justify-center rounded-lg text-gray-600">
+        <div className="w-full flex items-center justify-center rounded-lg text-gray-600">
           <Square3 />
         </div>
-        <div className="w-full  flex items-center justify-center rounded-lg text-gray-600">
+        <div className="w-full flex items-center justify-center rounded-lg text-gray-600">
           <Square4 />
         </div>
       </div>
 
       {/* Centered message below the grid */}
       <div className="text-center mb-0">
-        <p className="text-[12px] italic text-gray-800">{processMessage}</p>
+        <p className="text-[16px] italic text-gray-800">{processMessage}</p>
       </div>
     </div>
   );
